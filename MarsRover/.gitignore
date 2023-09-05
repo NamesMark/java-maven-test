@@ -1,0 +1,16 @@
+/target/
+/bin/
+
+.vscode/
+
+.DS_Store
+Thumbs.db
+
+*.log
+*.sql
+*.sqlite
+
+.mvn/takari/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.properties
+
+!/.mvn/wrapper/maven-wrapper.jar
