@@ -27,6 +27,10 @@ public class Plateau
         this.upperRightCoordinate = coordinate;
         this.rovers = new ArrayList<Rover>();
     }
+    public Plateau() {
+        this.upperRightCoordinate = new Coordinate(10, 10);
+        this.rovers = new ArrayList<Rover>();
+    }
 
     public static Plateau getInstance(Coordinate coordinate) {
         if (instance == null) {

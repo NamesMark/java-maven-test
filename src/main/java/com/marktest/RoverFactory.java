@@ -15,4 +15,8 @@ public class RoverFactory {
     public Rover createRover(Coordinate position, Orientation orientation, Plateau plateau) {
         return new Rover(position, orientation, plateau);
     }
+
+    public Rover createRover(Plateau plateau) {
+        return new Rover(plateau);
+    }
 }

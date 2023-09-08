@@ -49,8 +49,10 @@ public class App
         while (true) {
             x = -1;
             y = -1;
+            
             System.out.print("Enter Graph Upper Right Coordinate: ");
             String[] plateauCoordinates = scanner.nextLine().split(" ");
+            
             try {
                 x = Integer.parseInt(plateauCoordinates[0]);
                 y = Integer.parseInt(plateauCoordinates[1]);
@@ -67,15 +69,18 @@ public class App
     private static Rover getRoverDetails(Scanner scanner, RoverFactory roverFactory, Plateau plateau, int roverCount) {
         int roverX, roverY;
         Orientation roverOrientation;
+        
         while (true) {
             System.out.print("Rover " + roverCount + " Starting Position: "); 
             String[] startingPosition = scanner.nextLine().split(" ");
+            
             if (startingPosition.length != 3) {
                 System.out.println("Bad starting position input. Try again.");
                 continue;
             }
             roverX = -1;
             roverY = -1; 
+            
             try {
                 roverX = Integer.parseInt(startingPosition[0]);
                 roverY = Integer.parseInt(startingPosition[1]);
@@ -97,9 +102,26 @@ public class App
     }
 
     private static String getMovementPlan(Scanner scanner, Rover rover, int roverCount) {
-        System.out.print("Rover " + roverCount + " Movement Plan: ");
-        String movementPlan = scanner.nextLine();
+        String movementPlan;
+        
+        while (true) {
+            System.out.print("Rover " + roverCount + " Movement Plan: ");
+            movementPlan = scanner.nextLine();
+            if (isValidMovementPlan(movementPlan)) {
+                break;
+            }
+            System.out.println("Movement plan is invalid: only L, R, and M are allowed. Please try again.");
+        }
         return movementPlan;
+    }
+
+    public static boolean isValidMovementPlan(String movementPlan) {
+        for (char command : movementPlan.toCharArray()) {
+            if (command != 'L' && command != 'R' && command != 'M') {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void executeMovementPlan(Rover rover, String movementPlan) {
