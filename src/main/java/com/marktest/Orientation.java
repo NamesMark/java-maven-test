@@ -11,8 +11,27 @@ package com.marktest;
  * @version 1.0
  */
 public enum Orientation {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST;
+    NORTH('N'),
+    EAST('E'),
+    SOUTH('S'),
+    WEST('W');
+
+    private final char shortForm;
+
+    Orientation(char shortForm) {
+        this.shortForm = shortForm;
+    }
+
+    public char getShortForm() {
+        return shortForm;
+    }
+
+    public static Orientation fromShortForm(char shortForm) {
+        for (Orientation orientation : Orientation.values()) {
+            if (orientation.getShortForm() == shortForm) {
+                return orientation;
+            }
+        }
+        throw new IllegalArgumentException("Invalid orientation: " + shortForm);
+    }
 }

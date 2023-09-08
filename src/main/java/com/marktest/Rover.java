@@ -89,4 +89,13 @@ public class Rover {
             throw new IllegalArgumentException("Invalid move. Rover would go out of plateau boundaries.");
         }
     }
+
+    public Coordinate getPosition() {
+        return this.position;
+    }
+
+    public Orientation getOrientation() {
+        return this.orientation;
+    }
+
 }
